@@ -48,7 +48,7 @@ body {
 .nav-logo { display: flex; align-items: center; text-decoration: none; flex-shrink: 0; }
 
 .netflix-logo-img {
-  height: 52px;
+  height: 75px;
   width: auto;
   object-fit: contain;
   display: block;
