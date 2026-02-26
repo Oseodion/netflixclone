@@ -486,7 +486,7 @@ body {
 
 .modal-hero-info {
   position: absolute;
-  bottom: 20px; left: 24px;
+  bottom: 12px; left: 24px;
   z-index: 5;
   display: flex;
   align-items: center;
@@ -495,7 +495,7 @@ body {
 
 .modal-title {
   position: absolute;
-  top: 20%;
+  top: 15%;
   left: 24px;
   font-family: 'Bebas Neue', sans-serif;
   font-size: clamp(1.8rem, 4vw, 2.8rem);
@@ -595,6 +595,22 @@ footer {
   .hero-title { font-size: clamp(1.8rem, 7vw, 2.8rem); }
   .hero-desc { font-size: 0.82rem; -webkit-line-clamp: 2; }
   .btn-play, .btn-more { padding: 8px 18px; font-size: 0.88rem; }
+
+  .modal-title {
+  font-size: 1.4rem;
+  top: 10%;
+}
+.modal-hero-info {
+  bottom: 8px;
+}
+.btn-play.small {
+  padding: 6px 14px;
+  font-size: 0.8rem;
+}
+.modal-add-btn, .modal-like-btn {
+  width: 30px;
+  height: 30px;
+}
 
   .row { padding: 0 3%; }
   .row-arrow { display: none; }
