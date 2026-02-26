@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="logo.png" type="image/png" />
+  <title>Home - Netflix</title>
+  <link href="https://fonts.googleapis.com/css2?family=Netflix+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <a href="#" class="nav-logo"
+      onclick="filterRows('all');document.querySelectorAll('.nav-link').forEach(l=>l.classList.remove('active'));document.querySelector('[data-filter=all]').classList.add('active');return false;">
+      <img src="netflix-logo.png" alt="Netflix" class="netflix-logo-img" />
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#" class="nav-link active" data-filter="all">Home</a>
+      <a href="#" class="nav-link" data-filter="tvshows">Series</a>
+      <a href="#" class="nav-link" data-filter="movies">Films</a>
+      <a href="#" class="nav-link" data-filter="new">New & Popular</a>
+      <a href="#" class="nav-link" data-filter="mylist">My List</a>
+      <a href="#" class="nav-link" data-filter="all">Browse by Language</a>
+    </div>
+    <div class="nav-right">
+      <button class="nav-search-btn" id="searchToggle" onclick="toggleSearch()">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+          <path
+            d="m20.87 20.17-5.59-5.59C16.35 13.35 17 11.75 17 10c0-3.87-3.13-7-7-7s-7 3.13-7 7 3.13 7 7 7c1.75 0 3.35-.65 4.58-1.71l5.59 5.59.7-.71zM10 16c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z" />
+        </svg>
+      </button>
+      <div class="search-bar" id="searchBar">
+        <input type="text" id="searchInput" placeholder="Titles, people, genres"
+          onkeydown="if(event.key==='Enter')handleSearch()" />
+      </div>
+      <button class="nav-notif">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+          <path
+            d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z" />
+        </svg>
+      </button>
+      <div class="nav-avatar">J</div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-bg" id="heroBg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content" id="heroContent">
+      <div class="hero-skeleton" id="heroSkeleton">
+        <div class="sk-title"></div>
+        <div class="sk-desc"></div>
+        <div class="sk-desc short"></div>
+        <div class="sk-btns">
+          <div class="sk-btn"></div>
+          <div class="sk-btn"></div>
+        </div>
+      </div>
+      <div class="hero-info" id="heroInfo" style="display:none">
+        <div class="hero-badges" id="heroBadges"></div>
+        <h1 class="hero-title" id="heroTitle"></h1>
+        <p class="hero-desc" id="heroDesc"></p>
+        <div class="hero-actions">
+          <button class="btn-play" id="heroPlayBtn">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+            Play
+          </button>
+          <button class="btn-more" id="heroMoreBtn">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+              <path
+                d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
+            </svg>
+            More Info
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="hero-fade"></div>
+  </section>
+
+  <!-- ROWS -->
+  <main class="main" id="main">
+    <div id="rowsContainer"></div>
+  </main>
+
+  <!-- MODAL -->
+  <div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
+    <div class="modal" id="modal">
+      <button class="modal-close" onclick="closeModal()">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+          <path
+            d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+        </svg>
+      </button>
+      <div class="modal-hero" id="modalHero">
+        <div class="modal-trailer" id="modalTrailer"></div>
+        <div class="modal-hero-overlay"></div>
+        <div class="modal-hero-info">
+          <h2 class="modal-title" id="modalTitle"></h2>
+          <div class="modal-actions">
+            <button class="btn-play small" id="modalPlayBtn">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+              Play
+            </button>
+            <button class="modal-add-btn" title="Add to My List">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+              </svg>
+            </button>
+            <button class="modal-like-btn" title="I like this">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                <path
+                  d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-1.91l-.01-.01L23 10z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
