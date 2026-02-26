@@ -495,7 +495,7 @@ body {
 
 .modal-title {
   position: absolute;
-  top: 40%;
+  top: 20%;
   left: 24px;
   font-family: 'Bebas Neue', sans-serif;
   font-size: clamp(1.8rem, 4vw, 2.8rem);
