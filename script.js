@@ -362,7 +362,7 @@ function renderFooter() {
         <a href="#" class="footer-link">Corporate Information</a>
         <a href="#" class="footer-link">Contact Us</a>
       </div>
-      <p class="footer-copy">© 2026 Netflix Clone — Portfolio Project by Jeffrey Okhihie. Powered by TMDB.</p>
+      <p class="footer-copy">© 2026 Netflix Clone Portfolio Project by Jeffrey Okhihie Powered by TMDB</p>
     </footer>`);
 }
 
