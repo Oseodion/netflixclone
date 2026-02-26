@@ -500,7 +500,7 @@ body {
   font-family: 'Bebas Neue', sans-serif;
   font-size: clamp(1.8rem, 4vw, 2.8rem);
   text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
-  transform: translateY(-50%);
+  /* transform: translateY(-50%); */
 }
 
 .modal-add-btn, .modal-like-btn {
