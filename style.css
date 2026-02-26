@@ -48,7 +48,7 @@ body {
 .nav-logo { display: flex; align-items: center; text-decoration: none; flex-shrink: 0; }
 
 .netflix-logo-img {
-  height: 75px;
+  height: 52px;
   width: auto;
   object-fit: contain;
   display: block;
@@ -190,7 +190,7 @@ body {
   padding: 2px 8px;
 }
 .hero-netflix-badge {
-  height: 70px;
+  height: 26px;
   width: auto;
   object-fit: contain;
   display: block;
@@ -486,21 +486,29 @@ body {
 
 .modal-hero-info {
   position: absolute;
-  bottom: 12px; left: 24px;
+  bottom: 16px;
+  left: 24px;
+  right: 24px;
   z-index: 5;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
   gap: 10px;
 }
 
 .modal-title {
-  position: absolute;
-  top: 15%;
-  left: 24px;
   font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-size: clamp(1.6rem, 4vw, 2.8rem);
   text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
-  /* transform: translateY(-50%); */
+  position: static;
+  transform: none;
+  line-height: 1.1;
+}
+
+.modal-hero-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .modal-add-btn, .modal-like-btn {
@@ -595,22 +603,6 @@ footer {
   .hero-title { font-size: clamp(1.8rem, 7vw, 2.8rem); }
   .hero-desc { font-size: 0.82rem; -webkit-line-clamp: 2; }
   .btn-play, .btn-more { padding: 8px 18px; font-size: 0.88rem; }
-
-  .modal-title {
-  font-size: 1.4rem;
-  top: 10%;
-}
-.modal-hero-info {
-  bottom: 8px;
-}
-.btn-play.small {
-  padding: 6px 14px;
-  font-size: 0.8rem;
-}
-.modal-add-btn, .modal-like-btn {
-  width: 30px;
-  height: 30px;
-}
 
   .row { padding: 0 3%; }
   .row-arrow { display: none; }
